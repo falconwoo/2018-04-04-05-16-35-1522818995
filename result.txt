@@ -26,6 +26,8 @@ practice3
 +-------------+-----------+
 SQL:
     select companyName,avg(salary) avgSalary from Company c join Employee e on c.id = e.companyId group by c.id order by avg(salary) desc limit 1;
+OR
+    select companyName, max(cp.avgSalary) as avgSalary from  (select companyName,avg(salary) avgSalary from Company c join Employee e on c.id = e.companyId group by c.id order by avg(salary)) cp;
 
 practice4
 +----+------------+------+----------+-----------+--------+-------------+-----------+
