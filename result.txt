@@ -16,7 +16,7 @@ practice2
 | 'tengxun'   | 'xiaozhi'  |
 +-------------+------------+
 SQL:
-    select companyName, name from Company c join Employee e on c.id = e.companyId group by companyName order by salary;
+    select companyName, e1.name from Employee e1 join (select companyName, companyId, max(salary) maxSalary from Company c join Employee e on c.id = e.companyId group by companyId) ec on e1.companyId = ec.companyId and e1.salary = ec.maxSalary;
 
 practice3
 +-------------+-----------+
